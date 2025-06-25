@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote of the Day</title>
+  <style>
+    body {
+      background-color: #cfdaf7;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .quote-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 600px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    blockquote {
+      font-size: 1.2rem;
+      color: #333;
+      margin: 20px 0;
+    }
+
+    .author {
+      font-style: italic;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .buttons button, .buttons a {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .buttons a {
+      background-color: white;
+      color: #4a90e2;
+      border: 1px solid #4a90e2;
+    }
+
+    .buttons button:hover, .buttons a:hover {
+      background-color: #357ab8;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="quote-box">
+    <h2>Quote of the day</h2>
+    <blockquote id="quote">"I am of the opinion that my life belongs to the community, and as long as I live it is my privilege to do for it whatever I can."</blockquote>
+    <div class="author" id="author">— Bernard Shaw</div>
+    <div class="buttons">
+      <button onclick="newQuote()">New Quote</button>
+      <a href="#" id="tweetBtn" target="_blank">Tweet</a>
+    </div>
+  </div>
+
+  <script>
+    const quotes = [
+      {
+        quote: "I am of the opinion that my life belongs to the community, and as long as I live it is my privilege to do for it whatever I can.",
+        author: "Bernard Shaw"
+      },
+      {
+        quote: "Be the change that you wish to see in the world.",
+        author: "Mahatma Gandhi"
+      },
+      {
+        quote: "In the middle of every difficulty lies opportunity.",
+        author: "Albert Einstein"
+      },
+      {
+        quote: "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+        author: "Winston Churchill"
+      }
+    ];
+
+    function newQuote() {
+      const random = Math.floor(Math.random() * quotes.length);
+      document.getElementById('quote').textContent = `"${quotes[random].quote}"`;
+      document.getElementById('author').textContent = `— ${quotes[random].author}`;
+      document.getElementById('tweetBtn').href =
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(quotes[random].quote + " — " + quotes[random].author)}`;
+    }
+  </script>
+</body>
+</html>
